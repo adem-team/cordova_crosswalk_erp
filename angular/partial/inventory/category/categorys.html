@@ -1,0 +1,67 @@
+<div ng-include="'angular/partial/headtemplate.html'"></div>
+<div ng-include="'angular/partial/homemenu.html'"></div>
+<div class="content-wrapper">
+    <section class="content">
+<!--         <span data-ng-show="loading" us-spinner="{radius:30, width:8, length: 16}"></span> -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-danger">
+            <div class="panel-heading bg-aqua">
+                Category 
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-warning" href="#/product/new">
+                    New Category <i class="fa fa-plus"></i>
+                </a>
+
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" ng-model="apasaja" class=" form-control" placeholder="Search By Kategori Name">
+                    </div>
+                </div></br>
+               <table>
+                <thead>
+                  <tr>
+                    <th class="category">KATEGORI</th>
+                    <th class="category">CORP</th>
+                    <th class="category">STATUS</th>
+                    <th class="category">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="category in categories | filter: {NM_KATEGORI:apasaja}" class="repeat-item">
+                    	<td data-title="ID" class="category">{{category.NM_KATEGORI}}</td>
+                        <td data-title="COR" class="category">{{category.CORP_ID}}</td>
+                    	<td data-title="STS" class="category" ng-if='category.STATUS === 1' >
+                            <a class="btn btn-success btn-xs">
+                            	<i class="fa fa-edit"></i> &nbsp;Enable
+                            </a>
+                        </td>
+                        <td data-title="STS" class="category" ng-if='category.STATUS === 0 || category.STATUS === 3' >
+                            <a class="btn btn-danger btn-xs">
+                            	<i class="fa fa-edit"></i> &nbsp;Disable
+                            </a> 
+                        </td>
+                        <td data-title="EDI" class="category">
+                            <a href="javascript:;" ng-click="edit(barangumum)" style="padding-right:50px">
+                                <i class="fa fa-refresh fa-2x"></i>
+                            </a>
+                            <a href="javascript:;" ng-click="delete(barangumum)" style="float:right;padding-right:15px">
+                                <i class="fa fa-trash-o fa-2x"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+               </table>
+                
+             </div>
+           </div>
+
+        </div>
+      </div>
+    </section>
+</div>
+
+<div ng-include="'angular/partial/foottemplate.html'"></div>
